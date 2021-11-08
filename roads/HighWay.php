@@ -5,13 +5,10 @@ abstract class HighWay {
     protected int $nbLane;
     protected int $maxSpeed;
 
-    public function __construct(array $currentVehicles, int $nbLane, int $maxSpeed) {
-        $this->currentVehicles = $currentVehicles;
+    public function __construct(int $nbLane,int $maxSpeed) {
         $this->nbLane = $nbLane;
         $this->maxSpeed = $maxSpeed;
     }
-
-    abstract public function addVehicle();
 
     public function getCurrentVehicle(): array {
         return $this->currentVehicles;
@@ -30,5 +27,8 @@ abstract class HighWay {
     }
     public function setMaxSpeed(int $maxSpeed): void {
         $this->maxSpeed = $maxSpeed;
+    }
+
+    abstract public function addVehicle(Vehicle $vehicle);
     }
 }

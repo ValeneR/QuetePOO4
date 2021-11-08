@@ -2,7 +2,6 @@
 require_once 'Vehicle.php';
 
 class Truck extends Vehicle {
-    private int $stockage;
     private int $charge = 0;
     private string $energy;
 
@@ -23,12 +22,6 @@ class Truck extends Vehicle {
         return $sentence;
     }
 
-    public function getStockage(): int {
-        return $this->stockage;
-    }
-    public function setStockage(int $stockage): void {
-        $this->stockage = $stockage;
-    }
     public function getCharge(): int {
         return $this->charge;
     }
@@ -38,7 +31,10 @@ class Truck extends Vehicle {
     public function getEnergy(): string {
         return $this->energy;
     }
-    public function setEnergy(string $energy): void {
-        $this->energy = $energy;
+    public function setEnergy(string $energy): Truck {
+        if (in_array($energy, self::ALLOWED_ENERGIES)) {
+            $this->energy = $energy;
+        }
+        return $this;
     }
 }

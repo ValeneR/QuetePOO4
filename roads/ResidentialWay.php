@@ -2,13 +2,15 @@
 require_once 'HighWay.php';
 require_once '/../Vehicle.php';
 
+final class ResidentialWay extends HighWay {
 
-final class MotorWay extends HighWay {
-    public function __construct(array $currentVehicles, int $nbLane = 2, int $maxSpeed = 50) {
-        parent::__construct($currentVehicles, $nbLane, $maxSpeed);
-    }
-
-    public function addVehicle(Vehicle $vehicle): void {
+    public function addVehicle(Vehicle $vehicle) {
+        if ($vehicle instanceof Vehicle) {
+            $this->currentVehicles[] = $vehicle;
             echo "This vehicle is OK!";
+        }
+        else {
+            echo "This vehicule is not allowed!";
+        }
     }
 }
